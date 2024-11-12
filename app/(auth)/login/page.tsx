@@ -11,13 +11,15 @@ import { useToast } from "@/components/ui/use-toast";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { Eye } from "lucide-react";
+import { signinShemma } from "@/models/auth";
 
 export default function Page() {
     const { toast } = useToast();
     const [showPassword, setShowPassword] = useState(false);
-    const form = useForm<any>({
+    const form = useForm<z.infer<typeof signinShemma>>({
+        resolver: zodResolver(signinShemma),
         defaultValues: {
-            usernameOrEmail: "",
+            usuario: "",
             password: "",
         },
     });
@@ -26,10 +28,10 @@ export default function Page() {
     }
 
     return (
-        <div className="w-full space-y-16 text-base">
+        <div className="w-full space-y-16 text-base ">
             <div className="space-y-3 text-center">
-                <Typography2xl className="">Login</Typography2xl>
-                <TypographyList className="text-[#6D6D6D]">Iniciar session</TypographyList>
+                <Typography2xl className="text-black font-bold text-3xl md:text-4xl">Iniciar Sesion</Typography2xl>
+                <TypographyList className="text-[#6D6D6D] text-[25px]">Ingrese Credenciales</TypographyList>
             </div>
             <div className="space-y-10">
                 <Form {...form}>
@@ -37,12 +39,12 @@ export default function Page() {
                         <div className="space-y-8">
                             <FormField
                                 control={form.control}
-                                name="usernameOrEmail"
+                                name="usuario"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Usuario</FormLabel>
+                                        <FormLabel className="text-[17px]">Usuario</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Username" {...field} />
+                                            <Input placeholder="Usuario" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -53,7 +55,7 @@ export default function Page() {
                                 name="password"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Password</FormLabel>
+                                        <FormLabel className="text-[17px]">Contraseña</FormLabel>
                                         <FormControl>
                                             <div className="relative">
                                                 <Input
@@ -77,9 +79,11 @@ export default function Page() {
 
 
                         </div>
-                        <Button type="submit" size={"lg"} className="w-full  text-white" disabled={form.formState.isSubmitting}>
+                        <div className="w-full flex justify-center">
+                        <Button variant={"secondary"} type="submit" size={"lg"} className="w-auto px-20 bg-black text-white hover:bg-gray-700" disabled={form.formState.isSubmitting}>
                             {form.formState.isSubmitting && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />} Continuar
                         </Button>
+                        </div>
                     </form>
                 </Form>
 

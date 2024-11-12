@@ -7,31 +7,11 @@ export default function Component({ children }: { children: React.ReactNode }) {
     <div className="flex relative h-screen">
       <div className="absolute top-4 md:top-8 left-4 md:left-8 z-[6]">
 
-        {/*
-        
-        <Image
-          src="/icons/logo-white.svg"
-          alt="Meetlabs Icon"
-          width={36}
-          height={41}
-          priority={true}
-          className="flex md:hidden"
-          style={{ height: '41px',  width: '36px' }}
-        />
-        <Image
-          src="/icons/meetlabs-icon.svg"
-          alt="Meetlabs Icon"
-          width={36}
-          height={41}
-          priority={true}
-          className="hidden md:flex"
-          style={{ height: '41px', width: '36px' }}
-        />
-        */}
+     
         
       </div>
       <div
-        className="hidden md:flex w-1/2 bg-gray-900 text-white p-8 flex-col-reverse justify-between relative"
+        className="hidden md:flex w-1/2 bg-gray-900  p-8 flex-col-reverse justify-between relative"
         style={{
           backgroundImage: "url('/images/layout-auth.jpg')",
           backgroundSize: "cover",
@@ -40,8 +20,8 @@ export default function Component({ children }: { children: React.ReactNode }) {
       >
         <div className="absolute inset-0 size-full bg-[#0F0F0F] bg-opacity-80"></div>
         <div className="relative z-[5]">
-          <p className="leading-7">
-            &quot;Reservated&quot;
+          <p className="leading-7 text-white font-semibold">
+            Sistema Integrado de inteligencia Criminal
           </p>
         </div>
       </div>
